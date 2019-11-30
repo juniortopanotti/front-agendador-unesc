@@ -1,0 +1,33 @@
+<div *ngIf="action === 'PERSIST'">
+  <h1 mat-dialog-title>Adicionando curso</h1>
+  <div fxLayout="column" fxFlexFill>
+    <form #myForm="ngForm" [formGroup]="cursoForm" autocomplete="off" novalidate>
+      <mat-form-field class="w-100">
+        <input matInput formControlName="nome" placeholder="Nome" id="nome" maxlength="100" required>
+        <mat-error *ngIf="error && error.path === 'nome'">
+          {{error.message}}
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+  <div>
+    <div fxLayout="row" fxLayoutAlign="end">
+      <button mat-raised-button (click)="onNoClick()">Cancelar</button>
+      <button mat-raised-button color="primary" (click)="addUser()" [disabled]="cursoForm.invalid" cdkFocusInitial>Salvar</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="action === 'DELETE'">
+  <h1 mat-dialog-title>Excluindo curso</h1>
+  <div class="dialogContent">
+    <div fxLayout="column" fxFlexFill>
+      Você tem certeza que deseja excluir o curso selecionado?
+    </div>
+  </div>
+  <div class="dialogActions">
+    <div fxLayout="row" fxLayoutAlign="end">
+      <button mat-raised-button (click)="onNoClick()">Cancelar</button>
+      <button mat-raised-button color="warn" (click)="delete()" cdkFocusInitial>Excluir</button>
+    </div>
+  </div>
+</div>

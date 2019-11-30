@@ -1,0 +1,24 @@
+<div fxLayout="row" fxLayoutAlign="space-between">
+  <h1>
+    Agendamentos
+  </h1>
+  <div fxLayout="row" fxLayoutAlign="space-evenly center">
+    <button mat-raised-button color="primary" (click)="saveUpdateDialog()">
+      <mat-icon>
+        add
+      </mat-icon>
+      Novo agendamento
+    </button>
+  </div>
+</div>
+
+<mat-card class="example-card">
+  <mat-card-content>
+    <mwl-calendar-month-view
+    [viewDate]="viewDate"
+    [locale]="locale"
+    [activeDayIsOpen]="true"
+    (beforeViewRender)="beforeMonthViewRender($event)">
+  </mwl-calendar-month-view>
+  </mat-card-content>
+</mat-card>

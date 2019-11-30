@@ -1,0 +1,42 @@
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'danger'" [icon]="'bookmarks'" [count]="13" [label]="'Agendamentos Pendentes'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'warn'" [icon]="'view_list'" [count]="12" [label]="'Agendamentos Cancelados'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'success'" [icon]="'shopping_cart'" [count]="124" [label]="'Agendamentos Realizados'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'info'" [icon]="'contact_support'" [count]="13" [label]="'Agendamentos Hoje'"></app-stat>
+  </div>
+</div>
+<div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-between stretch">
+  <app-bar-chart fxFlex.gt-sm="49" class="mb15"></app-bar-chart>
+  <app-donut-chart fxFlex.gt-sm="49" class="mb15"></app-donut-chart>
+  <app-radar-chart fxFlex.gt-sm="49" class="mb15"></app-radar-chart>
+  <app-pie-chart fxFlex.gt-sm="49" class="mb15"></app-pie-chart>
+  <app-line-chart fxFlex.gt-sm="49" class="mb15"></app-line-chart>
+  <app-polar-chart fxFlex.gt-sm="49" class="mb15"></app-polar-chart>
+</div>
+
+<!-- <div class="mt20" fxLayout="row" fxLayoutAlign="space-between stretch" fxLayout.lt-md="column" fxLayoutGap="20px">
+  <mat-card fxFlex *ngFor="let item of places">
+    <img mat-card-image [src]="item.imgSrc">
+    <mat-card-header style="justify-content: center">
+      <mat-card-title>
+        <h3 class="m-0">{{item.name}}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      {{item.description}}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>{{item.charge}}</button>
+      <button mat-button>
+        <mat-icon class="location-icon">location_on</mat-icon> {{item.location}}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div> -->
