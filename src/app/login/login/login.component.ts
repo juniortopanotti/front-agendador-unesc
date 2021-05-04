@@ -16,10 +16,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   public loginForm: FormGroup;
-  private email;
+  private document;
   private password;
-  public emailPattern =
-    '^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$';
   public error: any;
 
   constructor(
@@ -29,13 +27,9 @@ export class LoginComponent {
   ) {
     this.loginForm = this.fb.group({
       password: new FormControl('', Validators.required),
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern(this.emailPattern),
-        Validators.maxLength(100)
-      ])
+      document: new FormControl('', [Validators.required])
     });
-    this.email = this.loginForm.get('email');
+    this.document = this.loginForm.get('document');
     this.password = this.loginForm.get('password');
   }
 
@@ -46,7 +40,6 @@ export class LoginComponent {
 
     this.authService.login(this.loginForm.getRawValue()).subscribe(
       (authCredential: AuthCredential) => {
-        console.log(authCredential);
         this.router.navigate(['/dashboard']);
       },
       err => {
@@ -56,17 +49,4 @@ export class LoginComponent {
       }
     );
   }
-
-  // async onLogin() {
-  //   if (this.loginForm.valid) {
-  //     let response: any = await this.authService.login(this.loginForm.getRawValue());
-
-  //     if (response.error) {
-  //       this.error = response.error.error;
-  //       return;
-  //     }
-
-  //     this.router.navigate(['/dashboard']);
-  //   }
-  // }
 }

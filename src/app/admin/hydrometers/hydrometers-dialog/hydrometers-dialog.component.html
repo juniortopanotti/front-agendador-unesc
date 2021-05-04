@@ -1,0 +1,43 @@
+<div *ngIf="action === 'PERSIST'">
+  <h1 mat-dialog-title>Adicionando Hidrometro</h1>
+  <div fxLayout="column" fxFlexFill>
+    <form #myForm="ngForm" [formGroup]="hydrometersForm" autocomplete="off" novalidate>
+      <mat-form-field style="width: 40%">
+        <input matInput formControlName="ccid" placeholder="CCID" id="ccid" required>
+        <mat-error *ngIf="error && error.path === 'ccid'">
+          {{error.message}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field style="width: 50%">
+        <input matInput formControlName="document" placeholder="Inscrição" id="document" required>
+        <mat-error *ngIf="error && error.path === 'document'">
+          {{error.message}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field style="width: 60%">
+        <input matInput formControlName="addres" placeholder="Endereço" id="addres" required>
+        <mat-error *ngIf="error && error.path === 'addres'">
+          {{error.message}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field style="width: 15%">
+        <input matInput formControlName="lat" placeholder="Latitude" id="lat" required>
+        <mat-error *ngIf="error && error.path === 'lat'">
+          {{error.message}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field style="width: 15%">
+        <input matInput formControlName="long" placeholder="Longitude" id="long" required>
+        <mat-error *ngIf="error && error.path === 'addres'">
+          {{error.message}}
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+  <div>
+    <div fxLayout="row" fxLayoutAlign="end">
+      <button mat-raised-button (click)="onNoClick()">Cancelar</button>
+      <button mat-raised-button color="primary" (click)="addHydrometer()" [disabled]="hydrometersForm.invalid" cdkFocusInitial>Salvar</button>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,5 @@
-import { AtividadeService } from './services/atividade/atividade.service';
-import { UsuarioService } from './services/usuario/usuario.service';
-import { CursoService } from './services/curso/curso.service';
+import { UsersService } from './services/users/users.service';
+import { HydrometersService } from './services/hydrometers/hydrometers.service';
 import { AuthInterceptor } from './core/auth.interceptor';
 import { AuthService } from './services/auth/auth.service';
 import {
@@ -22,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { ThemeService } from 'ng2-charts';
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,9 +43,9 @@ import { SharedModule } from './shared/shared.module';
   providers: [
     { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig },
     AuthService,
-    CursoService,
-    UsuarioService,
-    AtividadeService,
+    HydrometersService,
+    UsersService,
+    ThemeService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

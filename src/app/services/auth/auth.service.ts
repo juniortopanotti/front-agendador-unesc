@@ -1,7 +1,7 @@
 import { AuthCredential } from './../../models/auth-credential.model';
 import { Login } from './../../models/login.model';
 import { environment } from './../../../environments/environment';
-import { IUser, Usuario } from './../../models/user.model';
+import { IUser, Users } from '../../models/users.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
@@ -52,10 +52,10 @@ export class AuthService {
     return this.loadUser();
   }
 
-  private loadUser(): Observable<Usuario> {
+  private loadUser(): Observable<Users> {
     if (this.isAuthenticated()) {
-      return this.http.get<Usuario>(`${this.endpoint}/current`).pipe(
-        tap((usuario: Usuario) => {
+      return this.http.get<Users>(`${this.endpoint}/current`).pipe(
+        tap((usuario: Users) => {
           this.user = usuario;
           this.isLogged$.next(true);
           // return this.user;

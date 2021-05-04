@@ -2,12 +2,12 @@
   <div class="content px20">
     <form class="login-form" #myForm="ngForm" [formGroup]="loginForm" (ngSubmit)="login()" autocomplete="off" novalidate>
       <div class="text-center">
-        <h2 class="app-name">Agendador</h2>
+        <h2 class="app-name">Companhia Hidrica</h2>
       </div>
       <div fxLayout="row">
         <div fxFlexFill>
           <mat-form-field class="w-100">
-            <input formControlName="email" matInput placeholder="Email" id="email">
+            <input formControlName="document" matInput placeholder="Inscrição" id="document">
           </mat-form-field>
           <mat-form-field class="w-100">
             <input formControlName="password" matInput type="password" placeholder="Password" id="password">

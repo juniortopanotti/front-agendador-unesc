@@ -15,7 +15,8 @@ const routes: Routes = [
   },
   {
     path: 'cadastrar',
-    loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
+    loadChildren: () =>
+      import('./register/register.module').then(m => m.RegisterModule)
   },
   {
     path: '**',

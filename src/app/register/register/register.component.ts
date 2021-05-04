@@ -1,5 +1,5 @@
-import { UsuarioService } from './../../services/usuario/usuario.service';
-import { CursoService } from './../../services/curso/curso.service';
+import { UsersService } from '../../services/users/users.service';
+import { HydrometersService } from '../../services/hydrometers/hydrometers.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -46,8 +46,8 @@ export class RegisterComponent {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private cursoService: CursoService,
-    private usuarioService: UsuarioService
+    private cursoService: HydrometersService,
+    private usuarioService: UsersService
   ) {
     this.firstStep = this._formBuilder.group({
       nome: new FormControl('', [

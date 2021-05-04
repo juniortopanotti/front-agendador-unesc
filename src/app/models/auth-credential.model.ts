@@ -1,5 +1,5 @@
-import { Usuario } from './user.model';
+import { Users } from './users.model';
 export interface AuthCredential {
-  usuario: Usuario;
+  usuario: Users;
   token: string;
 }

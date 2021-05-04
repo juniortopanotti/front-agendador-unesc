@@ -13,33 +13,23 @@ const routes: Routes = [
         redirectTo: 'dashboard'
       },
       {
-        path: 'cursos',
-        loadChildren: () => import('./curso/curso.module').then(m => m.CursoModule),
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'atividades',
-        loadChildren: () => import('./atividade/atividade.module').then(m => m.AtividadeModule),
+        path: 'hidrometros',
+        loadChildren: () =>
+          import('./hydrometers/hydrometers.module').then(
+            m => m.HydrometersModule
+          ),
         canActivate: [AuthGuard]
       },
       {
         path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'horarios',
-        loadChildren: () => import('./horario/horario.module').then(m => m.HorarioModule),
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then(m => m.DashboardModule),
         canActivate: [AuthGuard]
       },
       {
         path: 'usuarios',
-        loadChildren: () => import('./usuario/usuario.module').then(m => m.UsuarioModule),
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'agendamentos',
-        loadChildren: () => import('./agendamento/agendamento.module').then(m => m.AgendamentoModule),
+        loadChildren: () =>
+          import('./users/users.module').then(m => m.UsersModule),
         canActivate: [AuthGuard]
       }
     ]
