@@ -11,15 +11,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { HomeComponent } from './home/home.component';
 import { StatComponent } from './stat/stat.component';
 
-
 import { ChartsModule as Ng2Charts } from 'ng2-charts';
-
-import { BarChartComponent } from './bar-chart/bar-chart.component';
-import { DonutChartComponent } from './donut-chart/donut-chart.component';
-import { RadarChartComponent } from './radar-chart/radar-chart.component';
-import { PieChartComponent } from './pie-chart/pie-chart.component';
-import { LineChartComponent } from './line-chart/line-chart.component';
-import { PolarChartComponent } from './polar-chart/polar-chart.component';
 
 @NgModule({
   imports: [
@@ -32,18 +24,8 @@ import { PolarChartComponent } from './polar-chart/polar-chart.component';
     MatButtonModule,
     MatIconModule,
 
-
-
-
-
     Ng2Charts
   ],
-  declarations: [HomeComponent, StatComponent,  HomeComponent,
-    BarChartComponent,
-    DonutChartComponent,
-    RadarChartComponent,
-    PieChartComponent,
-    LineChartComponent,
-    PolarChartComponent]
+  declarations: [HomeComponent, StatComponent, HomeComponent]
 })
 export class DashboardModule {}

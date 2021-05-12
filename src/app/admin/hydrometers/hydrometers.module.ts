@@ -1,3 +1,8 @@
+import { MatListModule } from '@angular/material/list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { HydrometersComponent } from './hydrometers/hydrometers.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HydrometersDialogComponent } from './hydrometers-dialog/hydrometers-dialog.component';
@@ -18,7 +23,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSlideToggle, MatSlideToggleModule } from '@angular/material';
+import {
+  MatList,
+  MatSlideToggle,
+  MatSlideToggleModule
+} from '@angular/material';
+
+import { ChartsModule as Ng2Charts } from 'ng2-charts';
 
 @NgModule({
   imports: [
@@ -40,9 +51,18 @@ import { MatSlideToggle, MatSlideToggleModule } from '@angular/material';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatGridListModule,
+    MatTabsModule,
+    MatDatepickerModule,
+    MatListModule,
+    Ng2Charts
   ],
-  declarations: [HydrometersListComponent, HydrometersDialogComponent],
+  declarations: [
+    HydrometersListComponent,
+    HydrometersDialogComponent,
+    HydrometersComponent
+  ],
   entryComponents: [HydrometersDialogComponent],
   providers: []
 })

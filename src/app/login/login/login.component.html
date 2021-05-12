@@ -17,17 +17,9 @@
       <div fxLayout="column" *ngIf="error" class="error">
         {{error}}
       </div>
-      <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.xs="column" class="mt20 mb20">
-        <mat-checkbox color="primary" [ngStyle.xs]="{'margin-bottom.px': 10}">Lembrar-me</mat-checkbox>
-        <a href="javascript:void(0)">Recuperar Senha</a>
-      </div>
-      <div fxLayout="column" class="cadastrar">
-          <a [routerLink]="['/cadastrar']">Não possui conta? Clique aqui para se cadastrar.</a>
-      </div>
       <div fxLayout="row">
         <div fxFlexFill>
           <button type="submit" mat-raised-button color="primary" class="w-100">Login</button>
-          <!-- <button type="button" mat-button color="primary" class="w-100" (click)="onLogin()">Sign Up</button> -->
         </div>
       </div>
     </form>

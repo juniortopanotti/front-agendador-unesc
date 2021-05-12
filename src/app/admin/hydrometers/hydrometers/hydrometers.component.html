@@ -1,0 +1,165 @@
+<div class="mat-elevation-z8">
+  <mat-grid-list cols="1" rows="1" rowHeight="100px">
+    <mat-grid-tile>
+      <div class="header">
+        <span>
+          Hidrometro
+        </span>
+        <h1>{{hydrometer}}</h1>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Diário">
+      <div style="padding: 10px">
+        <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
+          <div class="mb10" fxFlex="29" fxFlex.lt-lg="29">
+            <mat-form-field>
+              <mat-label>Escolha uma data</mat-label>
+              <input matInput [matDatepicker]="dayPicker" (dateChange)="consumptionDayDpChange($event)">
+              <mat-datepicker-toggle matSuffix [for]="dayPicker"></mat-datepicker-toggle>
+              <mat-datepicker #dayPicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-list role="list">
+              <mat-list-item role="listitem" *ngFor="let item of consumoDiarioData; let i = index">
+                {{i >  0 ? (consumoDiarioData[i - 1]._id.hour | number:'2.0') + ':00 à ' + (item._id.hour | number:'2.0') + ':00 - ' + item.totalConsumption + 'mL' : (item._id.hour | number:'2.0') + ':00 - ' + item.totalConsumption + 'mL'}}
+              </mat-list-item>
+            </mat-list>
+          </div>
+          <div class="mb10" fxFlex="69" fxFlex.lt-lg="69">
+            <div class="consumo">
+              <span>
+                Consumo total:
+              </span>
+              <h1>
+                {{consumoDiarioTotal}} mL
+              </h1>
+            </div>
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Consumo Geral </mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <canvas baseChart [datasets]="dayChartData" [labels]="dayChartLabels" [options]="lineChartOptions"
+                  [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Mensal">
+      <div style="padding: 10px">
+        <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
+          <div class="mb10" fxFlex="29" fxFlex.lt-lg="29">
+            <mat-form-field>
+              <mat-label>Mês e Ano</mat-label>
+              <input matInput [matDatepicker]="monthPicker" [formControl]="month">
+              <mat-datepicker-toggle matSuffix [for]="monthPicker"></mat-datepicker-toggle>
+              <mat-datepicker #monthPicker
+                            startView="multi-year"
+                            (yearSelected)="chosenYearHandler($event)"
+                            (monthSelected)="chosenMonthHandler($event, monthPicker)">
+              </mat-datepicker>
+            </mat-form-field>
+            <mat-list role="list">
+              <mat-list-item role="listitem" *ngFor="let item of consumoMensalData; let i = index">
+                {{item._id.day | number:'2.0' }}/{{item._id.month | number:'2.0'}}/{{item._id.year }} - {{item.totalConsumption}}mL
+
+              </mat-list-item>
+            </mat-list>
+          </div>
+          <div class="mb10" fxFlex="69" fxFlex.lt-lg="69">
+            <div class="consumo">
+              <span>
+                Consumo total:
+              </span>
+              <h1>
+                {{consumoMensalTotal}} mL
+              </h1>
+            </div>
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Consumo Geral </mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <canvas baseChart [datasets]="monthChartData" [labels]="monthChartLabels" [options]="lineChartOptions"
+                  [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Anual">
+      <div style="padding: 10px">
+        <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
+          <div class="mb10" fxFlex="100" fxFlex.lt-lg="100">
+
+          </div>
+        </div>
+        <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
+          <div class="mb10" fxFlex="29" fxFlex.lt-lg="29">
+            <mat-form-field>
+              <mat-label>Ano</mat-label>
+              <input matInput [matDatepicker]="yearPicker" [formControl]="year">
+              <mat-datepicker-toggle matSuffix [for]="yearPicker"></mat-datepicker-toggle>
+              <mat-datepicker #yearPicker
+                            startView="multi-year"
+                            (yearSelected)="chosenYearPickerHandler($event, yearPicker)">
+              </mat-datepicker>
+            </mat-form-field>
+            <mat-list role="list">
+              <mat-list-item role="listitem" *ngFor="let item of consumoAnualData; let i = index">
+                {{meses[item._id.month - 1]}} - {{item.totalConsumption}}mL
+              </mat-list-item>
+            </mat-list>
+          </div>
+          <div class="mb10" fxFlex="69" fxFlex.lt-lg="69">
+            <div class="consumo">
+              <span>
+                Consumo total:
+              </span>
+              <h1>
+                {{consumoAnualTotal}} mL
+              </h1>
+            </div>
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Consumo Geral </mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <canvas baseChart [datasets]="yearChartData" [labels]="yearChartLabels" [options]="lineChartOptions"
+                  [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <!-- <mat-grid-list cols="6" rows="1" rowHeight="100px">
+    <mat-grid-tile colspan="1" >2</mat-grid-tile>
+    <mat-grid-tile colspan="5"> 3</mat-grid-tile>
+  </mat-grid-list> -->
+  <!-- <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card> -->
+</div>

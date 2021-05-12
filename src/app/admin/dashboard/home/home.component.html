@@ -1,23 +1,33 @@
 <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
   <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
-    <app-stat [bgClass]="'danger'" [icon]="'bookmarks'" [count]="13" [label]="'Agendamentos Pendentes'"></app-stat>
+    <app-stat [bgClass]="'info'" [icon]="'router'" [count]="hidrometrosAtivos" [label]="'Hidrômetros Ativos'"></app-stat>
   </div>
   <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
-    <app-stat [bgClass]="'warn'" [icon]="'view_list'" [count]="12" [label]="'Agendamentos Cancelados'"></app-stat>
+    <app-stat [bgClass]="'warn'" [icon]="'router'" [count]="hidrometrosInativos" [label]="'Hidrômetros Inativos'"></app-stat>
   </div>
   <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
-    <app-stat [bgClass]="'success'" [icon]="'shopping_cart'" [count]="124" [label]="'Agendamentos Realizados'"></app-stat>
+    <app-stat [bgClass]="'success'" [icon]="'people'" [count]="usuarios" [label]="'Usuários'"></app-stat>
   </div>
   <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
-    <app-stat [bgClass]="'info'" [icon]="'contact_support'" [count]="13" [label]="'Agendamentos Hoje'"></app-stat>
+    <app-stat [bgClass]="'info'" [icon]="'leaderboard'" [count]="consumoGeralMensal + '/mL'" [label]="'Consumo geral mensal'"></app-stat>
   </div>
 </div>
 <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-between stretch">
-  <app-donut-chart fxFlex.gt-sm="49" class="mb15"></app-donut-chart>
+  <mat-card fxFlex="100" heigth="100px">
+    <mat-card-header>
+      <mat-card-title>Consumo Geral {{meses[date.getMonth()]}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <canvas baseChart  height="100" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+        [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+    </mat-card-content>
+  </mat-card>
+  <!-- <app-donut-chart fxFlex.gt-sm="49" class="mb15"></app-donut-chart>
   <app-radar-chart fxFlex.gt-sm="49" class="mb15"></app-radar-chart>
-  <app-pie-chart fxFlex.gt-sm="49" class="mb15"></app-pie-chart>
-  <app-line-chart fxFlex.gt-sm="49" class="mb15"></app-line-chart>
-  <app-polar-chart fxFlex.gt-sm="49" class="mb15"></app-polar-chart>
+  <app-pie-chart fxFlex.gt-sm="49" class="mb15"></app-pie-chart> -->
+  <!-- <app-line-chart fxFlex.gt-sm="100" class="mb15"></app-line-chart> -->
+  <!-- <app-polar-chart fxFlex.gt-sm="49" class="mb15"></app-polar-chart> -->
 </div>
 
 <!-- <div class="mt20" fxLayout="row" fxLayoutAlign="space-between stretch" fxLayout.lt-md="column" fxLayoutGap="20px">

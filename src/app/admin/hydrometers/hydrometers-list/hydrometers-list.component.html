@@ -19,7 +19,10 @@
     <table mat-table [dataSource]="data">
       <ng-container matColumnDef="ccid">
         <th mat-header-cell *matHeaderCellDef style="width: 30%;">CCID</th>
-        <td mat-cell *matCellDef="let row" style="width: 70%;">{{row.ccid}}</td>
+        <td mat-cell *matCellDef="let row" style="width: 70%;">
+          <a [routerLink]="['/hidrometros', row.ccid]">{{row.ccid}}</a>
+
+        </td>
       </ng-container>
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef style="width: 30%;">Cliente</th>
